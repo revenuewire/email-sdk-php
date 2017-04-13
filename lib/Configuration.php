@@ -88,7 +88,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://email.rwpay.io/';
+    protected $host = 'https://localhost/';
 
     /**
      * Timeout (second) of the HTTP request, by default set to 0, no timeout

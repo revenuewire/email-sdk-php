@@ -1,6 +1,6 @@
 # Swagger\Client\TemplatesApi
 
-All URIs are relative to *https://email.rwpay.io/*
+All URIs are relative to *https://localhost/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
