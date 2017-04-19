@@ -95,10 +95,6 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Error](docs/Model/Error.md)
- - [InlineResponse200](docs/Model/InlineResponse200.md)
- - [InlineResponse2001](docs/Model/InlineResponse2001.md)
- - [InlineResponse2002](docs/Model/InlineResponse2002.md)
- - [InlineResponse2003](docs/Model/InlineResponse2003.md)
  - [Mailer](docs/Model/Mailer.md)
  - [Message](docs/Model/Message.md)
  - [NewTemplate](docs/Model/NewTemplate.md)

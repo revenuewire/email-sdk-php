@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **sendEmail**
-> \Swagger\Client\Model\InlineResponse2003 sendEmail($message)
+> \Swagger\Client\Model\Response sendEmail($message)
 
 Sending an email
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\Swagger\Client\Model\Response**](../Model/Response.md)
 
 ### Authorization
 
