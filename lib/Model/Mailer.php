@@ -55,7 +55,7 @@ class Mailer implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'name' => 'string',
-        'email_address' => 'string'
+        'emailAddress' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -69,7 +69,7 @@ class Mailer implements ArrayAccess
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'email_address' => 'emailAddress'
+        'emailAddress' => 'emailAddress'
     ];
 
 
@@ -79,7 +79,7 @@ class Mailer implements ArrayAccess
      */
     protected static $setters = [
         'name' => 'setName',
-        'email_address' => 'setEmailAddress'
+        'emailAddress' => 'setEmailAddress'
     ];
 
 
@@ -89,7 +89,7 @@ class Mailer implements ArrayAccess
      */
     protected static $getters = [
         'name' => 'getName',
-        'email_address' => 'getEmailAddress'
+        'emailAddress' => 'getEmailAddress'
     ];
 
     public static function attributeMap()
@@ -124,7 +124,7 @@ class Mailer implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
+        $this->container['emailAddress'] = isset($data['emailAddress']) ? $data['emailAddress'] : null;
     }
 
     /**
@@ -136,8 +136,8 @@ class Mailer implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['email_address'] === null) {
-            $invalid_properties[] = "'email_address' can't be null";
+        if ($this->container['emailAddress'] === null) {
+            $invalid_properties[] = "'emailAddress' can't be null";
         }
         return $invalid_properties;
     }
@@ -151,7 +151,7 @@ class Mailer implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['email_address'] === null) {
+        if ($this->container['emailAddress'] === null) {
             return false;
         }
         return true;
@@ -180,22 +180,22 @@ class Mailer implements ArrayAccess
     }
 
     /**
-     * Gets email_address
+     * Gets emailAddress
      * @return string
      */
     public function getEmailAddress()
     {
-        return $this->container['email_address'];
+        return $this->container['emailAddress'];
     }
 
     /**
-     * Sets email_address
-     * @param string $email_address
+     * Sets emailAddress
+     * @param string $emailAddress
      * @return $this
      */
-    public function setEmailAddress($email_address)
+    public function setEmailAddress($emailAddress)
     {
-        $this->container['email_address'] = $email_address;
+        $this->container['emailAddress'] = $emailAddress;
 
         return $this;
     }

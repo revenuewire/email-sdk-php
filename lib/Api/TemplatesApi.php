@@ -314,13 +314,13 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $content_id Content Id (required)
+     * @param string $contentId Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Response
      */
-    public function deleteContent($id, $content_id)
+    public function deleteContent($id, $contentId)
     {
-        list($response) = $this->deleteContentWithHttpInfo($id, $content_id);
+        list($response) = $this->deleteContentWithHttpInfo($id, $contentId);
         return $response;
     }
 
@@ -330,19 +330,19 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $content_id Content Id (required)
+     * @param string $contentId Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteContentWithHttpInfo($id, $content_id)
+    public function deleteContentWithHttpInfo($id, $contentId)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling deleteContent');
         }
-        // verify the required parameter 'content_id' is set
-        if ($content_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $content_id when calling deleteContent');
+        // verify the required parameter 'contentId' is set
+        if ($contentId === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $contentId when calling deleteContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents/{contentId}";
@@ -365,10 +365,10 @@ class TemplatesApi
             );
         }
         // path params
-        if ($content_id !== null) {
+        if ($contentId !== null) {
             $resourcePath = str_replace(
                 "{" . "contentId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($content_id),
+                $this->apiClient->getSerializer()->toPathValue($contentId),
                 $resourcePath
             );
         }
@@ -516,13 +516,13 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $content_id Content Id (required)
+     * @param string $contentId Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\TemplateContent
      */
-    public function getContent($id, $content_id)
+    public function getContent($id, $contentId)
     {
-        list($response) = $this->getContentWithHttpInfo($id, $content_id);
+        list($response) = $this->getContentWithHttpInfo($id, $contentId);
         return $response;
     }
 
@@ -532,19 +532,19 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $content_id Content Id (required)
+     * @param string $contentId Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\TemplateContent, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentWithHttpInfo($id, $content_id)
+    public function getContentWithHttpInfo($id, $contentId)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling getContent');
         }
-        // verify the required parameter 'content_id' is set
-        if ($content_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $content_id when calling getContent');
+        // verify the required parameter 'contentId' is set
+        if ($contentId === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $contentId when calling getContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents/{contentId}";
@@ -567,10 +567,10 @@ class TemplatesApi
             );
         }
         // path params
-        if ($content_id !== null) {
+        if ($contentId !== null) {
             $resourcePath = str_replace(
                 "{" . "contentId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($content_id),
+                $this->apiClient->getSerializer()->toPathValue($contentId),
                 $resourcePath
             );
         }
@@ -798,16 +798,16 @@ class TemplatesApi
      * Update Template Content
      *
      * @param string $id Template Id (required)
-     * @param string $content_id Template Content Id (required)
+     * @param string $contentId Template Content Id (required)
      * @param string $subject  (required)
      * @param string $body  (required)
      * @param string $text  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\TemplateContent
      */
-    public function updateContent($id, $content_id, $subject, $body, $text = null)
+    public function updateContent($id, $contentId, $subject, $body, $text = null)
     {
-        list($response) = $this->updateContentWithHttpInfo($id, $content_id, $subject, $body, $text);
+        list($response) = $this->updateContentWithHttpInfo($id, $contentId, $subject, $body, $text);
         return $response;
     }
 
@@ -817,22 +817,22 @@ class TemplatesApi
      * Update Template Content
      *
      * @param string $id Template Id (required)
-     * @param string $content_id Template Content Id (required)
+     * @param string $contentId Template Content Id (required)
      * @param string $subject  (required)
      * @param string $body  (required)
      * @param string $text  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\TemplateContent, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateContentWithHttpInfo($id, $content_id, $subject, $body, $text = null)
+    public function updateContentWithHttpInfo($id, $contentId, $subject, $body, $text = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling updateContent');
         }
-        // verify the required parameter 'content_id' is set
-        if ($content_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $content_id when calling updateContent');
+        // verify the required parameter 'contentId' is set
+        if ($contentId === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $contentId when calling updateContent');
         }
         // verify the required parameter 'subject' is set
         if ($subject === null) {
@@ -863,10 +863,10 @@ class TemplatesApi
             );
         }
         // path params
-        if ($content_id !== null) {
+        if ($contentId !== null) {
             $resourcePath = str_replace(
                 "{" . "contentId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($content_id),
+                $this->apiClient->getSerializer()->toPathValue($contentId),
                 $resourcePath
             );
         }
@@ -933,13 +933,13 @@ class TemplatesApi
      *
      * @param string $id Template Id (required)
      * @param string $name Template Name (required)
-     * @param string $default_language Default Language (required)
+     * @param string $defaultLanguage Default Language (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Template
      */
-    public function updateTemplate($id, $name, $default_language)
+    public function updateTemplate($id, $name, $defaultLanguage)
     {
-        list($response) = $this->updateTemplateWithHttpInfo($id, $name, $default_language);
+        list($response) = $this->updateTemplateWithHttpInfo($id, $name, $defaultLanguage);
         return $response;
     }
 
@@ -950,11 +950,11 @@ class TemplatesApi
      *
      * @param string $id Template Id (required)
      * @param string $name Template Name (required)
-     * @param string $default_language Default Language (required)
+     * @param string $defaultLanguage Default Language (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Template, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTemplateWithHttpInfo($id, $name, $default_language)
+    public function updateTemplateWithHttpInfo($id, $name, $defaultLanguage)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
@@ -964,9 +964,9 @@ class TemplatesApi
         if ($name === null) {
             throw new \InvalidArgumentException('Missing the required parameter $name when calling updateTemplate');
         }
-        // verify the required parameter 'default_language' is set
-        if ($default_language === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $default_language when calling updateTemplate');
+        // verify the required parameter 'defaultLanguage' is set
+        if ($defaultLanguage === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $defaultLanguage when calling updateTemplate');
         }
         // parse inputs
         $resourcePath = "/templates/{id}";
@@ -996,8 +996,8 @@ class TemplatesApi
             $formParams['name'] = $this->apiClient->getSerializer()->toFormValue($name);
         }
         // form params
-        if ($default_language !== null) {
-            $formParams['defaultLanguage'] = $this->apiClient->getSerializer()->toFormValue($default_language);
+        if ($defaultLanguage !== null) {
+            $formParams['defaultLanguage'] = $this->apiClient->getSerializer()->toFormValue($defaultLanguage);
         }
         
         // for model (json/xml)

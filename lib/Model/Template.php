@@ -56,10 +56,10 @@ class Template implements ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'name' => 'string',
-        'default_language' => 'string',
+        'defaultLanguage' => 'string',
         'active' => 'bool',
-        'last_message_sent_date' => 'int',
-        'total_message_sent' => 'int',
+        'lastMessageSentDate' => 'int',
+        'totalMessageSent' => 'int',
         'created' => 'int',
         'modified' => 'int',
         'contents' => '\Swagger\Client\Model\TemplateContentKey[]'
@@ -77,10 +77,10 @@ class Template implements ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'default_language' => 'defaultLanguage',
+        'defaultLanguage' => 'defaultLanguage',
         'active' => 'active',
-        'last_message_sent_date' => 'lastMessageSentDate',
-        'total_message_sent' => 'totalMessageSent',
+        'lastMessageSentDate' => 'lastMessageSentDate',
+        'totalMessageSent' => 'totalMessageSent',
         'created' => 'created',
         'modified' => 'modified',
         'contents' => 'contents'
@@ -94,10 +94,10 @@ class Template implements ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'default_language' => 'setDefaultLanguage',
+        'defaultLanguage' => 'setDefaultLanguage',
         'active' => 'setActive',
-        'last_message_sent_date' => 'setLastMessageSentDate',
-        'total_message_sent' => 'setTotalMessageSent',
+        'lastMessageSentDate' => 'setLastMessageSentDate',
+        'totalMessageSent' => 'setTotalMessageSent',
         'created' => 'setCreated',
         'modified' => 'setModified',
         'contents' => 'setContents'
@@ -111,10 +111,10 @@ class Template implements ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'default_language' => 'getDefaultLanguage',
+        'defaultLanguage' => 'getDefaultLanguage',
         'active' => 'getActive',
-        'last_message_sent_date' => 'getLastMessageSentDate',
-        'total_message_sent' => 'getTotalMessageSent',
+        'lastMessageSentDate' => 'getLastMessageSentDate',
+        'totalMessageSent' => 'getTotalMessageSent',
         'created' => 'getCreated',
         'modified' => 'getModified',
         'contents' => 'getContents'
@@ -153,10 +153,10 @@ class Template implements ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['default_language'] = isset($data['default_language']) ? $data['default_language'] : null;
+        $this->container['defaultLanguage'] = isset($data['defaultLanguage']) ? $data['defaultLanguage'] : null;
         $this->container['active'] = isset($data['active']) ? $data['active'] : null;
-        $this->container['last_message_sent_date'] = isset($data['last_message_sent_date']) ? $data['last_message_sent_date'] : null;
-        $this->container['total_message_sent'] = isset($data['total_message_sent']) ? $data['total_message_sent'] : null;
+        $this->container['lastMessageSentDate'] = isset($data['lastMessageSentDate']) ? $data['lastMessageSentDate'] : null;
+        $this->container['totalMessageSent'] = isset($data['totalMessageSent']) ? $data['totalMessageSent'] : null;
         $this->container['created'] = isset($data['created']) ? $data['created'] : null;
         $this->container['modified'] = isset($data['modified']) ? $data['modified'] : null;
         $this->container['contents'] = isset($data['contents']) ? $data['contents'] : null;
@@ -177,8 +177,8 @@ class Template implements ArrayAccess
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
         }
-        if ($this->container['default_language'] === null) {
-            $invalid_properties[] = "'default_language' can't be null";
+        if ($this->container['defaultLanguage'] === null) {
+            $invalid_properties[] = "'defaultLanguage' can't be null";
         }
         return $invalid_properties;
     }
@@ -198,7 +198,7 @@ class Template implements ArrayAccess
         if ($this->container['name'] === null) {
             return false;
         }
-        if ($this->container['default_language'] === null) {
+        if ($this->container['defaultLanguage'] === null) {
             return false;
         }
         return true;
@@ -248,22 +248,22 @@ class Template implements ArrayAccess
     }
 
     /**
-     * Gets default_language
+     * Gets defaultLanguage
      * @return string
      */
     public function getDefaultLanguage()
     {
-        return $this->container['default_language'];
+        return $this->container['defaultLanguage'];
     }
 
     /**
-     * Sets default_language
-     * @param string $default_language
+     * Sets defaultLanguage
+     * @param string $defaultLanguage
      * @return $this
      */
-    public function setDefaultLanguage($default_language)
+    public function setDefaultLanguage($defaultLanguage)
     {
-        $this->container['default_language'] = $default_language;
+        $this->container['defaultLanguage'] = $defaultLanguage;
 
         return $this;
     }
@@ -290,43 +290,43 @@ class Template implements ArrayAccess
     }
 
     /**
-     * Gets last_message_sent_date
+     * Gets lastMessageSentDate
      * @return int
      */
     public function getLastMessageSentDate()
     {
-        return $this->container['last_message_sent_date'];
+        return $this->container['lastMessageSentDate'];
     }
 
     /**
-     * Sets last_message_sent_date
-     * @param int $last_message_sent_date
+     * Sets lastMessageSentDate
+     * @param int $lastMessageSentDate
      * @return $this
      */
-    public function setLastMessageSentDate($last_message_sent_date)
+    public function setLastMessageSentDate($lastMessageSentDate)
     {
-        $this->container['last_message_sent_date'] = $last_message_sent_date;
+        $this->container['lastMessageSentDate'] = $lastMessageSentDate;
 
         return $this;
     }
 
     /**
-     * Gets total_message_sent
+     * Gets totalMessageSent
      * @return int
      */
     public function getTotalMessageSent()
     {
-        return $this->container['total_message_sent'];
+        return $this->container['totalMessageSent'];
     }
 
     /**
-     * Sets total_message_sent
-     * @param int $total_message_sent
+     * Sets totalMessageSent
+     * @param int $totalMessageSent
      * @return $this
      */
-    public function setTotalMessageSent($total_message_sent)
+    public function setTotalMessageSent($totalMessageSent)
     {
-        $this->container['total_message_sent'] = $total_message_sent;
+        $this->container['totalMessageSent'] = $totalMessageSent;
 
         return $this;
     }

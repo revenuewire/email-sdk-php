@@ -54,7 +54,7 @@ class TemplateContentKey implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'content_id' => 'string',
+        'contentId' => 'string',
         'lang' => 'string'
     ];
 
@@ -68,7 +68,7 @@ class TemplateContentKey implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'content_id' => 'contentId',
+        'contentId' => 'contentId',
         'lang' => 'lang'
     ];
 
@@ -78,7 +78,7 @@ class TemplateContentKey implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'content_id' => 'setContentId',
+        'contentId' => 'setContentId',
         'lang' => 'setLang'
     ];
 
@@ -88,7 +88,7 @@ class TemplateContentKey implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'content_id' => 'getContentId',
+        'contentId' => 'getContentId',
         'lang' => 'getLang'
     ];
 
@@ -123,7 +123,7 @@ class TemplateContentKey implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_id'] = isset($data['content_id']) ? $data['content_id'] : null;
+        $this->container['contentId'] = isset($data['contentId']) ? $data['contentId'] : null;
         $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
     }
 
@@ -153,22 +153,22 @@ class TemplateContentKey implements ArrayAccess
 
 
     /**
-     * Gets content_id
+     * Gets contentId
      * @return string
      */
     public function getContentId()
     {
-        return $this->container['content_id'];
+        return $this->container['contentId'];
     }
 
     /**
-     * Sets content_id
-     * @param string $content_id
+     * Sets contentId
+     * @param string $contentId
      * @return $this
      */
-    public function setContentId($content_id)
+    public function setContentId($contentId)
     {
-        $this->container['content_id'] = $content_id;
+        $this->container['contentId'] = $contentId;
 
         return $this;
     }

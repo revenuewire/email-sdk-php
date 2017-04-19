@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**template_id** | **string** |  | 
+**templateId** | **string** |  | 
 **lang** | **string** |  | [optional] 
 **from** | [**\Swagger\Client\Model\Mailer**](Mailer.md) |  | 
 **to** | [**\Swagger\Client\Model\Mailer[]**](Mailer.md) |  | 
-**reply_to** | [**\Swagger\Client\Model\Mailer[]**](Mailer.md) |  | [optional] 
+**replyTo** | [**\Swagger\Client\Model\Mailer[]**](Mailer.md) |  | [optional] 
 **cc** | [**\Swagger\Client\Model\Mailer[]**](Mailer.md) |  | [optional] 
 **bcc** | [**\Swagger\Client\Model\Mailer[]**](Mailer.md) |  | [optional] 
 **data** | **object** |  | 

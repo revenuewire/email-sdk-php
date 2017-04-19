@@ -5,10 +5,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | 
 **name** | **string** |  | 
-**default_language** | **string** |  | 
+**defaultLanguage** | **string** |  | 
 **active** | **bool** |  | [optional] 
-**last_message_sent_date** | **int** |  | [optional] 
-**total_message_sent** | **int** |  | [optional] 
+**lastMessageSentDate** | **int** |  | [optional] 
+**totalMessageSent** | **int** |  | [optional] 
 **created** | **int** |  | [optional] 
 **modified** | **int** |  | [optional] 
 **contents** | [**\Swagger\Client\Model\TemplateContentKey[]**](TemplateContentKey.md) |  | [optional] 
