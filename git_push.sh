@@ -18,7 +18,7 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="give another try"
+    release_note="upgrade jwt and services"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
