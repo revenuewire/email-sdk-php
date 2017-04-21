@@ -18,7 +18,9 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="fix"
+    release_note="Automatic merge from master -> develop
+
+* commit 'd466a6cf5b68ea5be9f22dcc87545d29f92a6558':"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
