@@ -18,7 +18,9 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="Merge branch 'develop' of ssh://git.rw.app:7999/micro/email into develop"
+    release_note="Automatic merge from master -> develop
+
+* commit 'a7074f3dbc14e8e93af6e35ba1a706c4e132528f':"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
