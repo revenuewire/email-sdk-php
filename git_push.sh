@@ -18,7 +18,7 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="Emails: use more standard model setting"
+    release_note="fix again"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
