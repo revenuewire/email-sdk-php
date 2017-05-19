@@ -18,7 +18,7 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="fix an error that audit cause the email to resend"
+    release_note="Email: fix it"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 
