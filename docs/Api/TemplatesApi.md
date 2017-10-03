@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateContent**
-> \Swagger\Client\Model\TemplateContent updateContent($id, $content)
+> \Swagger\Client\Model\TemplateContent updateContent($id, $content_id, $content)
 
 Update Template Content
 
@@ -478,10 +478,11 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorizat
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
 $id = "id_example"; // string | Template Id
+$content_id = "content_id_example"; // string | Content Id
 $content = new \Swagger\Client\Model\UpdateTemplateContent(); // \Swagger\Client\Model\UpdateTemplateContent | 
 
 try {
-    $result = $api_instance->updateContent($id, $content);
+    $result = $api_instance->updateContent($id, $content_id, $content);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->updateContent: ', $e->getMessage(), PHP_EOL;
@@ -494,6 +495,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Template Id |
+ **content_id** | **string**| Content Id |
  **content** | [**\Swagger\Client\Model\UpdateTemplateContent**](../Model/\Swagger\Client\Model\UpdateTemplateContent.md)|  | [optional]
 
 ### Return type

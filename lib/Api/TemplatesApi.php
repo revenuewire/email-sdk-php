@@ -939,13 +939,14 @@ class TemplatesApi
      * Update Template Content
      *
      * @param string $id Template Id (required)
+     * @param string $content_id Content Id (required)
      * @param \Swagger\Client\Model\UpdateTemplateContent $content  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\TemplateContent
      */
-    public function updateContent($id, $content = null)
+    public function updateContent($id, $content_id, $content = null)
     {
-        list($response) = $this->updateContentWithHttpInfo($id, $content);
+        list($response) = $this->updateContentWithHttpInfo($id, $content_id, $content);
         return $response;
     }
 
@@ -955,15 +956,20 @@ class TemplatesApi
      * Update Template Content
      *
      * @param string $id Template Id (required)
+     * @param string $content_id Content Id (required)
      * @param \Swagger\Client\Model\UpdateTemplateContent $content  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\TemplateContent, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateContentWithHttpInfo($id, $content = null)
+    public function updateContentWithHttpInfo($id, $content_id, $content = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling updateContent');
+        }
+        // verify the required parameter 'content_id' is set
+        if ($content_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $content_id when calling updateContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents/{contentId}";
@@ -982,6 +988,14 @@ class TemplatesApi
             $resourcePath = str_replace(
                 "{" . "id" . "}",
                 $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($content_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "contentId" . "}",
+                $this->apiClient->getSerializer()->toPathValue($content_id),
                 $resourcePath
             );
         }
