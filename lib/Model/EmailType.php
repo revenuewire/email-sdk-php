@@ -1,6 +1,6 @@
 <?php
 /**
- * Mailer
+ * EmailType
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Mailer Class Doc Comment
+ * EmailType Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Mailer implements ArrayAccess
+class EmailType implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,15 @@ class Mailer implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'mailer';
+    protected static $swaggerModelName = 'emailType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'email_address' => 'string'
+        'type' => 'string',
+        'variables' => '\Swagger\Client\Model\EmailTypeVariable[]'
     ];
 
     public static function swaggerTypes()
@@ -68,8 +68,8 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'email_address' => 'emailAddress'
+        'type' => 'type',
+        'variables' => 'variables'
     ];
 
 
@@ -78,8 +78,8 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'email_address' => 'setEmailAddress'
+        'type' => 'setType',
+        'variables' => 'setVariables'
     ];
 
 
@@ -88,8 +88,8 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'email_address' => 'getEmailAddress'
+        'type' => 'getType',
+        'variables' => 'getVariables'
     ];
 
     public static function attributeMap()
@@ -107,8 +107,24 @@ class Mailer implements ArrayAccess
         return self::$getters;
     }
 
+    const TYPE_GENERIC = 'GENERIC';
+    const TYPE_PRODUCT_ACTIVATION = 'PRODUCT_ACTIVATION';
+    const TYPE_ORDER_CONFIRMATION = 'ORDER_CONFIRMATION';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_GENERIC,
+            self::TYPE_PRODUCT_ACTIVATION,
+            self::TYPE_ORDER_CONFIRMATION,
+        ];
+    }
     
 
     /**
@@ -123,8 +139,8 @@ class Mailer implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['variables'] = isset($data['variables']) ? $data['variables'] : null;
     }
 
     /**
@@ -136,9 +152,11 @@ class Mailer implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['email_address'] === null) {
-            $invalid_properties[] = "'email_address' can't be null";
+        $allowed_values = ["GENERIC", "PRODUCT_ACTIVATION", "ORDER_CONFIRMATION"];
+        if (!in_array($this->container['type'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'type', must be one of 'GENERIC', 'PRODUCT_ACTIVATION', 'ORDER_CONFIRMATION'.";
         }
+
         return $invalid_properties;
     }
 
@@ -151,7 +169,8 @@ class Mailer implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['email_address'] === null) {
+        $allowed_values = ["GENERIC", "PRODUCT_ACTIVATION", "ORDER_CONFIRMATION"];
+        if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
         return true;
@@ -159,43 +178,47 @@ class Mailer implements ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets type
      * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
-     * @param string $name
+     * Sets type
+     * @param string $type Type name must be unique
      * @return $this
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->container['name'] = $name;
+        $allowed_values = array('GENERIC', 'PRODUCT_ACTIVATION', 'ORDER_CONFIRMATION');
+        if (!is_null($type) && (!in_array($type, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'GENERIC', 'PRODUCT_ACTIVATION', 'ORDER_CONFIRMATION'");
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets email_address
-     * @return string
+     * Gets variables
+     * @return \Swagger\Client\Model\EmailTypeVariable[]
      */
-    public function getEmailAddress()
+    public function getVariables()
     {
-        return $this->container['email_address'];
+        return $this->container['variables'];
     }
 
     /**
-     * Sets email_address
-     * @param string $email_address
+     * Sets variables
+     * @param \Swagger\Client\Model\EmailTypeVariable[] $variables A list of variables avaiable for the type
      * @return $this
      */
-    public function setEmailAddress($email_address)
+    public function setVariables($variables)
     {
-        $this->container['email_address'] = $email_address;
+        $this->container['variables'] = $variables;
 
         return $this;
     }

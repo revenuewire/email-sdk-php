@@ -1,6 +1,6 @@
 <?php
 /**
- * Mailer
+ * EmailTypeVariable
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Mailer Class Doc Comment
+ * EmailTypeVariable Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Mailer implements ArrayAccess
+class EmailTypeVariable implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class Mailer implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'mailer';
+    protected static $swaggerModelName = 'emailTypeVariable';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,7 +55,7 @@ class Mailer implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'name' => 'string',
-        'email_address' => 'string'
+        'description' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -69,7 +69,7 @@ class Mailer implements ArrayAccess
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'email_address' => 'emailAddress'
+        'description' => 'description'
     ];
 
 
@@ -79,7 +79,7 @@ class Mailer implements ArrayAccess
      */
     protected static $setters = [
         'name' => 'setName',
-        'email_address' => 'setEmailAddress'
+        'description' => 'setDescription'
     ];
 
 
@@ -89,7 +89,7 @@ class Mailer implements ArrayAccess
      */
     protected static $getters = [
         'name' => 'getName',
-        'email_address' => 'getEmailAddress'
+        'description' => 'getDescription'
     ];
 
     public static function attributeMap()
@@ -124,7 +124,7 @@ class Mailer implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     }
 
     /**
@@ -136,9 +136,6 @@ class Mailer implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['email_address'] === null) {
-            $invalid_properties[] = "'email_address' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -151,9 +148,6 @@ class Mailer implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['email_address'] === null) {
-            return false;
-        }
         return true;
     }
 
@@ -180,22 +174,22 @@ class Mailer implements ArrayAccess
     }
 
     /**
-     * Gets email_address
+     * Gets description
      * @return string
      */
-    public function getEmailAddress()
+    public function getDescription()
     {
-        return $this->container['email_address'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets email_address
-     * @param string $email_address
+     * Sets description
+     * @param string $description
      * @return $this
      */
-    public function setEmailAddress($email_address)
+    public function setDescription($description)
     {
-        $this->container['email_address'] = $email_address;
+        $this->container['description'] = $description;
 
         return $this;
     }

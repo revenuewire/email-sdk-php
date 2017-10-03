@@ -1,9 +1,9 @@
 <?php
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 

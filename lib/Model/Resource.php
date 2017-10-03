@@ -1,6 +1,6 @@
 <?php
 /**
- * Mailer
+ * Resource
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Mailer Class Doc Comment
+ * Resource Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Mailer implements ArrayAccess
+class Resource implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,21 @@ class Mailer implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'mailer';
+    protected static $swaggerModelName = 'resource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'email_address' => 'string'
+        'id' => 'string',
+        'account_id' => 'int',
+        'scope' => 'string',
+        'lang' => 'string',
+        'type' => 'string',
+        'content' => 'string',
+        'created' => 'int',
+        'modified' => 'int'
     ];
 
     public static function swaggerTypes()
@@ -68,8 +74,14 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'email_address' => 'emailAddress'
+        'id' => 'id',
+        'account_id' => 'accountId',
+        'scope' => 'scope',
+        'lang' => 'lang',
+        'type' => 'type',
+        'content' => 'content',
+        'created' => 'created',
+        'modified' => 'modified'
     ];
 
 
@@ -78,8 +90,14 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'email_address' => 'setEmailAddress'
+        'id' => 'setId',
+        'account_id' => 'setAccountId',
+        'scope' => 'setScope',
+        'lang' => 'setLang',
+        'type' => 'setType',
+        'content' => 'setContent',
+        'created' => 'setCreated',
+        'modified' => 'setModified'
     ];
 
 
@@ -88,8 +106,14 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'email_address' => 'getEmailAddress'
+        'id' => 'getId',
+        'account_id' => 'getAccountId',
+        'scope' => 'getScope',
+        'lang' => 'getLang',
+        'type' => 'getType',
+        'content' => 'getContent',
+        'created' => 'getCreated',
+        'modified' => 'getModified'
     ];
 
     public static function attributeMap()
@@ -123,8 +147,14 @@ class Mailer implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['account_id'] = isset($data['account_id']) ? $data['account_id'] : null;
+        $this->container['scope'] = isset($data['scope']) ? $data['scope'] : null;
+        $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['content'] = isset($data['content']) ? $data['content'] : null;
+        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
+        $this->container['modified'] = isset($data['modified']) ? $data['modified'] : null;
     }
 
     /**
@@ -136,9 +166,6 @@ class Mailer implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['email_address'] === null) {
-            $invalid_properties[] = "'email_address' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -151,51 +178,174 @@ class Mailer implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['email_address'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets name
+     * Gets id
      * @return string
      */
-    public function getName()
+    public function getId()
     {
-        return $this->container['name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets name
-     * @param string $name
+     * Sets id
+     * @param string $id
      * @return $this
      */
-    public function setName($name)
+    public function setId($id)
     {
-        $this->container['name'] = $name;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets email_address
-     * @return string
+     * Gets account_id
+     * @return int
      */
-    public function getEmailAddress()
+    public function getAccountId()
     {
-        return $this->container['email_address'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets email_address
-     * @param string $email_address
+     * Sets account_id
+     * @param int $account_id
      * @return $this
      */
-    public function setEmailAddress($email_address)
+    public function setAccountId($account_id)
     {
-        $this->container['email_address'] = $email_address;
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     * @param string $scope
+     * @return $this
+     */
+    public function setScope($scope)
+    {
+        $this->container['scope'] = $scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets lang
+     * @return string
+     */
+    public function getLang()
+    {
+        return $this->container['lang'];
+    }
+
+    /**
+     * Sets lang
+     * @param string $lang
+     * @return $this
+     */
+    public function setLang($lang)
+    {
+        $this->container['lang'] = $lang;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     * @param string $type
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     * @param string $content
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     * @return int
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     * @param int $created
+     * @return $this
+     */
+    public function setCreated($created)
+    {
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified
+     * @return int
+     */
+    public function getModified()
+    {
+        return $this->container['modified'];
+    }
+
+    /**
+     * Sets modified
+     * @param int $modified
+     * @return $this
+     */
+    public function setModified($modified)
+    {
+        $this->container['modified'] = $modified;
 
         return $this;
     }

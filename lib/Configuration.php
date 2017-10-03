@@ -10,9 +10,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -88,7 +88,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://localhost/';
+    protected $host = 'https://localhost/v1';
 
     /**
      * Timeout (second) of the HTTP request, by default set to 0, no timeout

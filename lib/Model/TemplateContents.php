@@ -1,6 +1,6 @@
 <?php
 /**
- * Mailer
+ * TemplateContents
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Mailer Class Doc Comment
+ * TemplateContents Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Mailer implements ArrayAccess
+class TemplateContents implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,14 @@ class Mailer implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'mailer';
+    protected static $swaggerModelName = 'templateContents';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'email_address' => 'string'
+        
     ];
 
     public static function swaggerTypes()
@@ -68,8 +67,7 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'email_address' => 'emailAddress'
+        
     ];
 
 
@@ -78,8 +76,7 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'email_address' => 'setEmailAddress'
+        
     ];
 
 
@@ -88,8 +85,7 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'email_address' => 'getEmailAddress'
+        
     ];
 
     public static function attributeMap()
@@ -123,8 +119,6 @@ class Mailer implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
     }
 
     /**
@@ -134,11 +128,8 @@ class Mailer implements ArrayAccess
      */
     public function listInvalidProperties()
     {
-        $invalid_properties = [];
+        $invalid_properties = parent::listInvalidProperties();
 
-        if ($this->container['email_address'] === null) {
-            $invalid_properties[] = "'email_address' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -150,55 +141,13 @@ class Mailer implements ArrayAccess
      */
     public function valid()
     {
-
-        if ($this->container['email_address'] === null) {
+        if (!parent::valid()) {
             return false;
         }
+
         return true;
     }
 
-
-    /**
-     * Gets name
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     * @param string $name
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets email_address
-     * @return string
-     */
-    public function getEmailAddress()
-    {
-        return $this->container['email_address'];
-    }
-
-    /**
-     * Sets email_address
-     * @param string $email_address
-     * @return $this
-     */
-    public function setEmailAddress($email_address)
-    {
-        $this->container['email_address'] = $email_address;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset

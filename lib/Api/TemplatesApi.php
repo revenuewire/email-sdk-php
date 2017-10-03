@@ -10,9 +10,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -93,16 +93,13 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $lang  (required)
-     * @param string $subject  (required)
-     * @param string $body HTML formatted message body (required)
-     * @param string $text Text formatted message boday (optional)
+     * @param \Swagger\Client\Model\NewTemplateContent $content  (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\TemplateContent
      */
-    public function addNewContent($id, $lang, $subject, $body, $text = null)
+    public function addNewContent($id, $content)
     {
-        list($response) = $this->addNewContentWithHttpInfo($id, $lang, $subject, $body, $text);
+        list($response) = $this->addNewContentWithHttpInfo($id, $content);
         return $response;
     }
 
@@ -112,30 +109,19 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $lang  (required)
-     * @param string $subject  (required)
-     * @param string $body HTML formatted message body (required)
-     * @param string $text Text formatted message boday (optional)
+     * @param \Swagger\Client\Model\NewTemplateContent $content  (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\TemplateContent, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addNewContentWithHttpInfo($id, $lang, $subject, $body, $text = null)
+    public function addNewContentWithHttpInfo($id, $content)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling addNewContent');
         }
-        // verify the required parameter 'lang' is set
-        if ($lang === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $lang when calling addNewContent');
-        }
-        // verify the required parameter 'subject' is set
-        if ($subject === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $subject when calling addNewContent');
-        }
-        // verify the required parameter 'body' is set
-        if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling addNewContent');
+        // verify the required parameter 'content' is set
+        if ($content === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $content when calling addNewContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents";
@@ -160,28 +146,22 @@ class TemplatesApi
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        // form params
-        if ($lang !== null) {
-            $formParams['lang'] = $this->apiClient->getSerializer()->toFormValue($lang);
+        // body params
+        $_tempBody = null;
+        if (isset($content)) {
+            $_tempBody = $content;
         }
-        // form params
-        if ($subject !== null) {
-            $formParams['subject'] = $this->apiClient->getSerializer()->toFormValue($subject);
-        }
-        // form params
-        if ($body !== null) {
-            $formParams['body'] = $this->apiClient->getSerializer()->toFormValue($body);
-        }
-        // form params
-        if ($text !== null) {
-            $formParams['text'] = $this->apiClient->getSerializer()->toFormValue($text);
-        }
-        
+
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
         }
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
@@ -275,6 +255,11 @@ class TemplatesApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
         if (strlen($apiKey) !== 0) {
             $headerParams['X-Authorization-JWT'] = $apiKey;
@@ -314,13 +299,13 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $contentId Content Id (required)
+     * @param string $content_id Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Response
+     * @return void
      */
-    public function deleteContent($id, $contentId)
+    public function deleteContent($id, $content_id)
     {
-        list($response) = $this->deleteContentWithHttpInfo($id, $contentId);
+        list($response) = $this->deleteContentWithHttpInfo($id, $content_id);
         return $response;
     }
 
@@ -330,19 +315,19 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $contentId Content Id (required)
+     * @param string $content_id Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteContentWithHttpInfo($id, $contentId)
+    public function deleteContentWithHttpInfo($id, $content_id)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling deleteContent');
         }
-        // verify the required parameter 'contentId' is set
-        if ($contentId === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $contentId when calling deleteContent');
+        // verify the required parameter 'content_id' is set
+        if ($content_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $content_id when calling deleteContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents/{contentId}";
@@ -365,10 +350,10 @@ class TemplatesApi
             );
         }
         // path params
-        if ($contentId !== null) {
+        if ($content_id !== null) {
             $resourcePath = str_replace(
                 "{" . "contentId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($contentId),
+                $this->apiClient->getSerializer()->toPathValue($content_id),
                 $resourcePath
             );
         }
@@ -383,6 +368,11 @@ class TemplatesApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
         if (strlen($apiKey) !== 0) {
             $headerParams['X-Authorization-JWT'] = $apiKey;
@@ -395,17 +385,13 @@ class TemplatesApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Response',
+                null,
                 '/templates/{id}/contents/{contentId}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Response', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Response', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
                 case 0:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
                     $e->setResponseObject($data);
@@ -477,6 +463,11 @@ class TemplatesApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
         if (strlen($apiKey) !== 0) {
             $headerParams['X-Authorization-JWT'] = $apiKey;
@@ -516,13 +507,13 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $contentId Content Id (required)
+     * @param string $content_id Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\TemplateContent
      */
-    public function getContent($id, $contentId)
+    public function getContent($id, $content_id)
     {
-        list($response) = $this->getContentWithHttpInfo($id, $contentId);
+        list($response) = $this->getContentWithHttpInfo($id, $content_id);
         return $response;
     }
 
@@ -532,19 +523,19 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $contentId Content Id (required)
+     * @param string $content_id Content Id (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\TemplateContent, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentWithHttpInfo($id, $contentId)
+    public function getContentWithHttpInfo($id, $content_id)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling getContent');
         }
-        // verify the required parameter 'contentId' is set
-        if ($contentId === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $contentId when calling getContent');
+        // verify the required parameter 'content_id' is set
+        if ($content_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $content_id when calling getContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents/{contentId}";
@@ -567,10 +558,10 @@ class TemplatesApi
             );
         }
         // path params
-        if ($contentId !== null) {
+        if ($content_id !== null) {
             $resourcePath = str_replace(
                 "{" . "contentId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($contentId),
+                $this->apiClient->getSerializer()->toPathValue($content_id),
                 $resourcePath
             );
         }
@@ -583,6 +574,11 @@ class TemplatesApi
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
         }
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
@@ -606,6 +602,105 @@ class TemplatesApi
             switch ($e->getCode()) {
                 case 200:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\TemplateContent', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 0:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Error', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getContents
+     *
+     * 
+     *
+     * @param string $id Template Id (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Swagger\Client\Model\TemplateContents
+     */
+    public function getContents($id)
+    {
+        list($response) = $this->getContentsWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation getContentsWithHttpInfo
+     *
+     * 
+     *
+     * @param string $id Template Id (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of \Swagger\Client\Model\TemplateContents, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getContentsWithHttpInfo($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling getContents');
+        }
+        // parse inputs
+        $resourcePath = "/templates/{id}/contents";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                "{" . "id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-Authorization-JWT'] = $apiKey;
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\Swagger\Client\Model\TemplateContents',
+                '/templates/{id}/contents'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\TemplateContents', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\TemplateContents', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 0:
@@ -679,6 +774,11 @@ class TemplatesApi
             $httpBody = $formParams; // for HTTP post (form)
         }
         // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
         if (strlen($apiKey) !== 0) {
             $headerParams['X-Authorization-JWT'] = $apiKey;
@@ -717,12 +817,18 @@ class TemplatesApi
      *
      * 
      *
+     * @param string $type  (optional)
+     * @param string $status  (optional)
+     * @param int $account_id  (optional)
+     * @param int $product_id  (optional)
+     * @param int $offer_id  (optional)
+     * @param string $scope  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Template[]
      */
-    public function getTemplates()
+    public function getTemplates($type = null, $status = null, $account_id = null, $product_id = null, $offer_id = null, $scope = null)
     {
-        list($response) = $this->getTemplatesWithHttpInfo();
+        list($response) = $this->getTemplatesWithHttpInfo($type, $status, $account_id, $product_id, $offer_id, $scope);
         return $response;
     }
 
@@ -731,10 +837,16 @@ class TemplatesApi
      *
      * 
      *
+     * @param string $type  (optional)
+     * @param string $status  (optional)
+     * @param int $account_id  (optional)
+     * @param int $product_id  (optional)
+     * @param int $offer_id  (optional)
+     * @param string $scope  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Template[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTemplatesWithHttpInfo()
+    public function getTemplatesWithHttpInfo($type = null, $status = null, $account_id = null, $product_id = null, $offer_id = null, $scope = null)
     {
         // parse inputs
         $resourcePath = "/templates";
@@ -748,6 +860,30 @@ class TemplatesApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
+        // query params
+        if ($type !== null) {
+            $queryParams['type'] = $this->apiClient->getSerializer()->toQueryValue($type);
+        }
+        // query params
+        if ($status !== null) {
+            $queryParams['status'] = $this->apiClient->getSerializer()->toQueryValue($status);
+        }
+        // query params
+        if ($account_id !== null) {
+            $queryParams['accountId'] = $this->apiClient->getSerializer()->toQueryValue($account_id);
+        }
+        // query params
+        if ($product_id !== null) {
+            $queryParams['productId'] = $this->apiClient->getSerializer()->toQueryValue($product_id);
+        }
+        // query params
+        if ($offer_id !== null) {
+            $queryParams['offerId'] = $this->apiClient->getSerializer()->toQueryValue($offer_id);
+        }
+        // query params
+        if ($scope !== null) {
+            $queryParams['scope'] = $this->apiClient->getSerializer()->toQueryValue($scope);
+        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
@@ -757,6 +893,11 @@ class TemplatesApi
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
         }
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
@@ -798,16 +939,13 @@ class TemplatesApi
      * Update Template Content
      *
      * @param string $id Template Id (required)
-     * @param string $contentId Template Content Id (required)
-     * @param string $subject  (required)
-     * @param string $body  (required)
-     * @param string $text  (optional)
+     * @param \Swagger\Client\Model\UpdateTemplateContent $content  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\TemplateContent
      */
-    public function updateContent($id, $contentId, $subject, $body, $text = null)
+    public function updateContent($id, $content = null)
     {
-        list($response) = $this->updateContentWithHttpInfo($id, $contentId, $subject, $body, $text);
+        list($response) = $this->updateContentWithHttpInfo($id, $content);
         return $response;
     }
 
@@ -817,30 +955,15 @@ class TemplatesApi
      * Update Template Content
      *
      * @param string $id Template Id (required)
-     * @param string $contentId Template Content Id (required)
-     * @param string $subject  (required)
-     * @param string $body  (required)
-     * @param string $text  (optional)
+     * @param \Swagger\Client\Model\UpdateTemplateContent $content  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\TemplateContent, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateContentWithHttpInfo($id, $contentId, $subject, $body, $text = null)
+    public function updateContentWithHttpInfo($id, $content = null)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling updateContent');
-        }
-        // verify the required parameter 'contentId' is set
-        if ($contentId === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $contentId when calling updateContent');
-        }
-        // verify the required parameter 'subject' is set
-        if ($subject === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $subject when calling updateContent');
-        }
-        // verify the required parameter 'body' is set
-        if ($body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $body when calling updateContent');
         }
         // parse inputs
         $resourcePath = "/templates/{id}/contents/{contentId}";
@@ -862,35 +985,25 @@ class TemplatesApi
                 $resourcePath
             );
         }
-        // path params
-        if ($contentId !== null) {
-            $resourcePath = str_replace(
-                "{" . "contentId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($contentId),
-                $resourcePath
-            );
-        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        // form params
-        if ($subject !== null) {
-            $formParams['subject'] = $this->apiClient->getSerializer()->toFormValue($subject);
+        // body params
+        $_tempBody = null;
+        if (isset($content)) {
+            $_tempBody = $content;
         }
-        // form params
-        if ($body !== null) {
-            $formParams['body'] = $this->apiClient->getSerializer()->toFormValue($body);
-        }
-        // form params
-        if ($text !== null) {
-            $formParams['text'] = $this->apiClient->getSerializer()->toFormValue($text);
-        }
-        
+
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
         }
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
@@ -932,14 +1045,13 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $name Template Name (required)
-     * @param string $defaultLanguage Default Language (required)
+     * @param \Swagger\Client\Model\UpdateTemplate $template  (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Template
      */
-    public function updateTemplate($id, $name, $defaultLanguage)
+    public function updateTemplate($id, $template)
     {
-        list($response) = $this->updateTemplateWithHttpInfo($id, $name, $defaultLanguage);
+        list($response) = $this->updateTemplateWithHttpInfo($id, $template);
         return $response;
     }
 
@@ -949,24 +1061,19 @@ class TemplatesApi
      * 
      *
      * @param string $id Template Id (required)
-     * @param string $name Template Name (required)
-     * @param string $defaultLanguage Default Language (required)
+     * @param \Swagger\Client\Model\UpdateTemplate $template  (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Template, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTemplateWithHttpInfo($id, $name, $defaultLanguage)
+    public function updateTemplateWithHttpInfo($id, $template)
     {
         // verify the required parameter 'id' is set
         if ($id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $id when calling updateTemplate');
         }
-        // verify the required parameter 'name' is set
-        if ($name === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $name when calling updateTemplate');
-        }
-        // verify the required parameter 'defaultLanguage' is set
-        if ($defaultLanguage === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $defaultLanguage when calling updateTemplate');
+        // verify the required parameter 'template' is set
+        if ($template === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $template when calling updateTemplate');
         }
         // parse inputs
         $resourcePath = "/templates/{id}";
@@ -991,20 +1098,22 @@ class TemplatesApi
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        // form params
-        if ($name !== null) {
-            $formParams['name'] = $this->apiClient->getSerializer()->toFormValue($name);
+        // body params
+        $_tempBody = null;
+        if (isset($template)) {
+            $_tempBody = $template;
         }
-        // form params
-        if ($defaultLanguage !== null) {
-            $formParams['defaultLanguage'] = $this->apiClient->getSerializer()->toFormValue($defaultLanguage);
-        }
-        
+
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
         }
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');

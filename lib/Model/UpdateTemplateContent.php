@@ -1,6 +1,6 @@
 <?php
 /**
- * Mailer
+ * UpdateTemplateContent
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Mailer Class Doc Comment
+ * UpdateTemplateContent Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Mailer implements ArrayAccess
+class UpdateTemplateContent implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,15 +47,16 @@ class Mailer implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'mailer';
+    protected static $swaggerModelName = 'updateTemplateContent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'email_address' => 'string'
+        'subject' => 'string',
+        'body' => 'string',
+        'text' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -68,8 +69,9 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'email_address' => 'emailAddress'
+        'subject' => 'subject',
+        'body' => 'body',
+        'text' => 'text'
     ];
 
 
@@ -78,8 +80,9 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'email_address' => 'setEmailAddress'
+        'subject' => 'setSubject',
+        'body' => 'setBody',
+        'text' => 'setText'
     ];
 
 
@@ -88,8 +91,9 @@ class Mailer implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'email_address' => 'getEmailAddress'
+        'subject' => 'getSubject',
+        'body' => 'getBody',
+        'text' => 'getText'
     ];
 
     public static function attributeMap()
@@ -123,8 +127,9 @@ class Mailer implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
+        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
+        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -136,9 +141,6 @@ class Mailer implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['email_address'] === null) {
-            $invalid_properties[] = "'email_address' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -151,51 +153,69 @@ class Mailer implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['email_address'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets name
+     * Gets subject
      * @return string
      */
-    public function getName()
+    public function getSubject()
     {
-        return $this->container['name'];
+        return $this->container['subject'];
     }
 
     /**
-     * Sets name
-     * @param string $name
+     * Sets subject
+     * @param string $subject
      * @return $this
      */
-    public function setName($name)
+    public function setSubject($subject)
     {
-        $this->container['name'] = $name;
+        $this->container['subject'] = $subject;
 
         return $this;
     }
 
     /**
-     * Gets email_address
+     * Gets body
      * @return string
      */
-    public function getEmailAddress()
+    public function getBody()
     {
-        return $this->container['email_address'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets email_address
-     * @param string $email_address
+     * Sets body
+     * @param string $body
      * @return $this
      */
-    public function setEmailAddress($email_address)
+    public function setBody($body)
     {
-        $this->container['email_address'] = $email_address;
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     * @param string $text
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

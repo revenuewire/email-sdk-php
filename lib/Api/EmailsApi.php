@@ -10,9 +10,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -88,9 +88,90 @@ class EmailsApi
     }
 
     /**
+     * Operation getEmailTypes
+     *
+     * Get a list of email types and variables
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Swagger\Client\Model\EmailType[]
+     */
+    public function getEmailTypes()
+    {
+        list($response) = $this->getEmailTypesWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation getEmailTypesWithHttpInfo
+     *
+     * Get a list of email types and variables
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of \Swagger\Client\Model\EmailType[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getEmailTypesWithHttpInfo()
+    {
+        // parse inputs
+        $resourcePath = "/types";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-Authorization-JWT'] = $apiKey;
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\Swagger\Client\Model\EmailType[]',
+                '/types'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\EmailType[]', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\EmailType[]', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
      * Operation sendEmail
      *
-     * Sending an email
+     * Sending an email directly.
      *
      * @param \Swagger\Client\Model\Message $message  (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -105,7 +186,7 @@ class EmailsApi
     /**
      * Operation sendEmailWithHttpInfo
      *
-     * Sending an email
+     * Sending an email directly.
      *
      * @param \Swagger\Client\Model\Message $message  (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -143,6 +224,11 @@ class EmailsApi
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
         } elseif (count($formParams) > 0) {
             $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
         }
         // this endpoint requires API key authentication
         $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');

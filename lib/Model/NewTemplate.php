@@ -11,9 +11,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -54,8 +54,12 @@ class NewTemplate implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
         'name' => 'string',
+        'scope' => 'string',
+        'type' => 'string',
+        'account_id' => 'int',
+        'product_id' => 'int',
+        'offer_id' => 'int',
         'contents' => '\Swagger\Client\Model\NewTemplateContent[]'
     ];
 
@@ -69,8 +73,12 @@ class NewTemplate implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'name' => 'name',
+        'scope' => 'scope',
+        'type' => 'type',
+        'account_id' => 'accountId',
+        'product_id' => 'productId',
+        'offer_id' => 'offerId',
         'contents' => 'contents'
     ];
 
@@ -80,8 +88,12 @@ class NewTemplate implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'name' => 'setName',
+        'scope' => 'setScope',
+        'type' => 'setType',
+        'account_id' => 'setAccountId',
+        'product_id' => 'setProductId',
+        'offer_id' => 'setOfferId',
         'contents' => 'setContents'
     ];
 
@@ -91,8 +103,12 @@ class NewTemplate implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'name' => 'getName',
+        'scope' => 'getScope',
+        'type' => 'getType',
+        'account_id' => 'getAccountId',
+        'product_id' => 'getProductId',
+        'offer_id' => 'getOfferId',
         'contents' => 'getContents'
     ];
 
@@ -111,8 +127,22 @@ class NewTemplate implements ArrayAccess
         return self::$getters;
     }
 
+    const SCOPE_PUBLIC = 'PUBLIC';
+    const SCOPE_PRIVATE = 'PRIVATE';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getScopeAllowableValues()
+    {
+        return [
+            self::SCOPE_PUBLIC,
+            self::SCOPE_PRIVATE,
+        ];
+    }
     
 
     /**
@@ -127,8 +157,12 @@ class NewTemplate implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['scope'] = isset($data['scope']) ? $data['scope'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['account_id'] = isset($data['account_id']) ? $data['account_id'] : null;
+        $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
+        $this->container['offer_id'] = isset($data['offer_id']) ? $data['offer_id'] : null;
         $this->container['contents'] = isset($data['contents']) ? $data['contents'] : null;
     }
 
@@ -144,6 +178,11 @@ class NewTemplate implements ArrayAccess
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
         }
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'.";
+        }
+
         if ($this->container['contents'] === null) {
             $invalid_properties[] = "'contents' can't be null";
         }
@@ -162,33 +201,16 @@ class NewTemplate implements ArrayAccess
         if ($this->container['name'] === null) {
             return false;
         }
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            return false;
+        }
         if ($this->container['contents'] === null) {
             return false;
         }
         return true;
     }
 
-
-    /**
-     * Gets id
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     * @param string $id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -207,6 +229,115 @@ class NewTemplate implements ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     * @param string $scope
+     * @return $this
+     */
+    public function setScope($scope)
+    {
+        $allowed_values = array('PUBLIC', 'PRIVATE');
+        if (!is_null($scope) && (!in_array($scope, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'");
+        }
+        $this->container['scope'] = $scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     * @param string $type
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     * @return int
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     * @param int $account_id
+     * @return $this
+     */
+    public function setAccountId($account_id)
+    {
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id
+     * @return int
+     */
+    public function getProductId()
+    {
+        return $this->container['product_id'];
+    }
+
+    /**
+     * Sets product_id
+     * @param int $product_id
+     * @return $this
+     */
+    public function setProductId($product_id)
+    {
+        $this->container['product_id'] = $product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_id
+     * @return int
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     * @param int $offer_id
+     * @return $this
+     */
+    public function setOfferId($offer_id)
+    {
+        $this->container['offer_id'] = $offer_id;
 
         return $this;
     }

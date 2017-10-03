@@ -11,9 +11,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -54,7 +54,7 @@ class Error implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'code' => 'int',
+        'code' => 'string',
         'message' => 'string'
     ];
 
@@ -166,7 +166,7 @@ class Error implements ArrayAccess
 
     /**
      * Gets code
-     * @return int
+     * @return string
      */
     public function getCode()
     {
@@ -175,7 +175,7 @@ class Error implements ArrayAccess
 
     /**
      * Sets code
-     * @param int $code
+     * @param string $code
      * @return $this
      */
     public function setCode($code)

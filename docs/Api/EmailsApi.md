@@ -1,16 +1,17 @@
 # Swagger\Client\EmailsApi
 
-All URIs are relative to *https://localhost/*
+All URIs are relative to *https://localhost/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**sendEmail**](EmailsApi.md#sendEmail) | **POST** /emails | Sending an email
+[**getEmailTypes**](EmailsApi.md#getEmailTypes) | **GET** /types | Get a list of email types and variables
+[**sendEmail**](EmailsApi.md#sendEmail) | **POST** /emails | Sending an email directly.
 
 
-# **sendEmail**
-> \Swagger\Client\Model\Response sendEmail($message)
+# **getEmailTypes**
+> \Swagger\Client\Model\EmailType[] getEmailTypes()
 
-Sending an email
+Get a list of email types and variables
 
 ### Example
 ```php
@@ -18,6 +19,58 @@ Sending an email
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
+
+$api_instance = new Swagger\Client\Api\EmailsApi();
+
+try {
+    $result = $api_instance->getEmailTypes();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EmailsApi->getEmailTypes: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Swagger\Client\Model\EmailType[]**](../Model/EmailType.md)
+
+### Authorization
+
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **sendEmail**
+> \Swagger\Client\Model\Response sendEmail($message)
+
+Sending an email directly.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
@@ -46,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 

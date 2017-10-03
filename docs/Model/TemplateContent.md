@@ -4,6 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | 
+**template_id** | **string** |  | 
+**lang** | **string** |  | 
 **subject** | **string** |  | 
 **body** | **string** | HTML formatted message | 
 **text** | **string** | Text formatted message | [optional] 

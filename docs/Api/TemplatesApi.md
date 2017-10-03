@@ -1,6 +1,6 @@
 # Swagger\Client\TemplatesApi
 
-All URIs are relative to *https://localhost/*
+All URIs are relative to *https://localhost/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**deleteContent**](TemplatesApi.md#deleteContent) | **DELETE** /templates/{id}/contents/{contentId} | 
 [**deleteTemplate**](TemplatesApi.md#deleteTemplate) | **DELETE** /templates/{id} | 
 [**getContent**](TemplatesApi.md#getContent) | **GET** /templates/{id}/contents/{contentId} | 
+[**getContents**](TemplatesApi.md#getContents) | **GET** /templates/{id}/contents | 
 [**getTemplate**](TemplatesApi.md#getTemplate) | **GET** /templates/{id} | 
 [**getTemplates**](TemplatesApi.md#getTemplates) | **GET** /templates | 
 [**updateContent**](TemplatesApi.md#updateContent) | **PUT** /templates/{id}/contents/{contentId} | Update Template Content
@@ -16,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **addNewContent**
-> \Swagger\Client\Model\TemplateContent addNewContent($id, $lang, $subject, $body, $text)
+> \Swagger\Client\Model\TemplateContent addNewContent($id, $content)
 
 
 
@@ -28,19 +29,20 @@ Add new template content (new language)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
 $id = "id_example"; // string | Template Id
-$lang = "lang_example"; // string | 
-$subject = "subject_example"; // string | 
-$body = "body_example"; // string | HTML formatted message body
-$text = "text_example"; // string | Text formatted message boday
+$content = new \Swagger\Client\Model\NewTemplateContent(); // \Swagger\Client\Model\NewTemplateContent | 
 
 try {
-    $result = $api_instance->addNewContent($id, $lang, $subject, $body, $text);
+    $result = $api_instance->addNewContent($id, $content);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->addNewContent: ', $e->getMessage(), PHP_EOL;
@@ -53,10 +55,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Template Id |
- **lang** | **string**|  |
- **subject** | **string**|  |
- **body** | **string**| HTML formatted message body |
- **text** | **string**| Text formatted message boday | [optional]
+ **content** | [**\Swagger\Client\Model\NewTemplateContent**](../Model/\Swagger\Client\Model\NewTemplateContent.md)|  |
 
 ### Return type
 
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -86,6 +85,10 @@ Create a new template
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
@@ -114,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -124,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteContent**
-> \Swagger\Client\Model\Response deleteContent($id, $contentId)
+> deleteContent($id, $content_id)
 
 
 
@@ -134,17 +137,20 @@ Name | Type | Description  | Notes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
 $id = "id_example"; // string | Template Id
-$contentId = "contentId_example"; // string | Content Id
+$content_id = "content_id_example"; // string | Content Id
 
 try {
-    $result = $api_instance->deleteContent($id, $contentId);
-    print_r($result);
+    $api_instance->deleteContent($id, $content_id);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->deleteContent: ', $e->getMessage(), PHP_EOL;
 }
@@ -156,15 +162,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Template Id |
- **contentId** | **string**| Content Id |
+ **content_id** | **string**| Content Id |
 
 ### Return type
 
-[**\Swagger\Client\Model\Response**](../Model/Response.md)
+void (empty response body)
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -186,6 +192,10 @@ Delete a template
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
@@ -214,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -224,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getContent**
-> \Swagger\Client\Model\TemplateContent getContent($id, $contentId)
+> \Swagger\Client\Model\TemplateContent getContent($id, $content_id)
 
 
 
@@ -234,16 +244,20 @@ Name | Type | Description  | Notes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
 $id = "id_example"; // string | Template Id
-$contentId = "contentId_example"; // string | Content Id
+$content_id = "content_id_example"; // string | Content Id
 
 try {
-    $result = $api_instance->getContent($id, $contentId);
+    $result = $api_instance->getContent($id, $content_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->getContent: ', $e->getMessage(), PHP_EOL;
@@ -256,7 +270,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Template Id |
- **contentId** | **string**| Content Id |
+ **content_id** | **string**| Content Id |
 
 ### Return type
 
@@ -264,7 +278,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getContents**
+> \Swagger\Client\Model\TemplateContents getContents($id)
+
+
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
+
+$api_instance = new Swagger\Client\Api\TemplatesApi();
+$id = "id_example"; // string | Template Id
+
+try {
+    $result = $api_instance->getContents($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TemplatesApi->getContents: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Template Id |
+
+### Return type
+
+[**\Swagger\Client\Model\TemplateContents**](../Model/TemplateContents.md)
+
+### Authorization
+
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -286,6 +352,10 @@ Get a template
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
@@ -314,7 +384,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -324,7 +394,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTemplates**
-> \Swagger\Client\Model\Template[] getTemplates()
+> \Swagger\Client\Model\Template[] getTemplates($type, $status, $account_id, $product_id, $offer_id, $scope)
 
 
 
@@ -336,14 +406,24 @@ Get all templates
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
+$type = "type_example"; // string | 
+$status = "status_example"; // string | 
+$account_id = 56; // int | 
+$product_id = 56; // int | 
+$offer_id = 56; // int | 
+$scope = "scope_example"; // string | 
 
 try {
-    $result = $api_instance->getTemplates();
+    $result = $api_instance->getTemplates($type, $status, $account_id, $product_id, $offer_id, $scope);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->getTemplates: ', $e->getMessage(), PHP_EOL;
@@ -352,7 +432,15 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**|  | [optional]
+ **status** | **string**|  | [optional]
+ **account_id** | **int**|  | [optional]
+ **product_id** | **int**|  | [optional]
+ **offer_id** | **int**|  | [optional]
+ **scope** | **string**|  | [optional]
 
 ### Return type
 
@@ -360,7 +448,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -370,7 +458,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateContent**
-> \Swagger\Client\Model\TemplateContent updateContent($id, $contentId, $subject, $body, $text)
+> \Swagger\Client\Model\TemplateContent updateContent($id, $content)
 
 Update Template Content
 
@@ -380,19 +468,20 @@ Update Template Content
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
 $id = "id_example"; // string | Template Id
-$contentId = "contentId_example"; // string | Template Content Id
-$subject = "subject_example"; // string | 
-$body = "body_example"; // string | 
-$text = "text_example"; // string | 
+$content = new \Swagger\Client\Model\UpdateTemplateContent(); // \Swagger\Client\Model\UpdateTemplateContent | 
 
 try {
-    $result = $api_instance->updateContent($id, $contentId, $subject, $body, $text);
+    $result = $api_instance->updateContent($id, $content);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->updateContent: ', $e->getMessage(), PHP_EOL;
@@ -405,10 +494,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Template Id |
- **contentId** | **string**| Template Content Id |
- **subject** | **string**|  |
- **body** | **string**|  |
- **text** | **string**|  | [optional]
+ **content** | [**\Swagger\Client\Model\UpdateTemplateContent**](../Model/\Swagger\Client\Model\UpdateTemplateContent.md)|  | [optional]
 
 ### Return type
 
@@ -416,7 +502,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 
@@ -426,7 +512,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateTemplate**
-> \Swagger\Client\Model\Template updateTemplate($id, $name, $defaultLanguage)
+> \Swagger\Client\Model\Template updateTemplate($id, $template)
 
 
 
@@ -438,17 +524,20 @@ Update a template
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: APIKeyHeader
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-API-KEY', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-API-KEY', 'Bearer');
+// Configure API key authorization: JWTHeader
 Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Authorization-JWT', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Authorization-JWT', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\TemplatesApi();
 $id = "id_example"; // string | Template Id
-$name = "name_example"; // string | Template Name
-$defaultLanguage = "defaultLanguage_example"; // string | Default Language
+$template = new \Swagger\Client\Model\UpdateTemplate(); // \Swagger\Client\Model\UpdateTemplate | 
 
 try {
-    $result = $api_instance->updateTemplate($id, $name, $defaultLanguage);
+    $result = $api_instance->updateTemplate($id, $template);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TemplatesApi->updateTemplate: ', $e->getMessage(), PHP_EOL;
@@ -461,8 +550,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Template Id |
- **name** | **string**| Template Name |
- **defaultLanguage** | **string**| Default Language |
+ **template** | [**\Swagger\Client\Model\UpdateTemplate**](../Model/\Swagger\Client\Model\UpdateTemplate.md)|  |
 
 ### Return type
 
@@ -470,7 +558,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKeyHeader](../../README.md#APIKeyHeader)
+[APIKeyHeader](../../README.md#APIKeyHeader), [JWTHeader](../../README.md#JWTHeader)
 
 ### HTTP request headers
 

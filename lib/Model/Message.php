@@ -11,9 +11,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -54,11 +54,11 @@ class Message implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'templateId' => 'string',
+        'template_id' => 'string',
         'lang' => 'string',
         'from' => '\Swagger\Client\Model\Mailer',
         'to' => '\Swagger\Client\Model\Mailer[]',
-        'replyTo' => '\Swagger\Client\Model\Mailer[]',
+        'reply_to' => '\Swagger\Client\Model\Mailer[]',
         'cc' => '\Swagger\Client\Model\Mailer[]',
         'bcc' => '\Swagger\Client\Model\Mailer[]',
         'data' => 'object'
@@ -74,11 +74,11 @@ class Message implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'templateId' => 'templateId',
+        'template_id' => 'templateId',
         'lang' => 'lang',
         'from' => 'from',
         'to' => 'to',
-        'replyTo' => 'replyTo',
+        'reply_to' => 'replyTo',
         'cc' => 'cc',
         'bcc' => 'bcc',
         'data' => 'data'
@@ -90,11 +90,11 @@ class Message implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'templateId' => 'setTemplateId',
+        'template_id' => 'setTemplateId',
         'lang' => 'setLang',
         'from' => 'setFrom',
         'to' => 'setTo',
-        'replyTo' => 'setReplyTo',
+        'reply_to' => 'setReplyTo',
         'cc' => 'setCc',
         'bcc' => 'setBcc',
         'data' => 'setData'
@@ -106,11 +106,11 @@ class Message implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'templateId' => 'getTemplateId',
+        'template_id' => 'getTemplateId',
         'lang' => 'getLang',
         'from' => 'getFrom',
         'to' => 'getTo',
-        'replyTo' => 'getReplyTo',
+        'reply_to' => 'getReplyTo',
         'cc' => 'getCc',
         'bcc' => 'getBcc',
         'data' => 'getData'
@@ -147,11 +147,11 @@ class Message implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['templateId'] = isset($data['templateId']) ? $data['templateId'] : null;
+        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
         $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
         $this->container['from'] = isset($data['from']) ? $data['from'] : null;
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
-        $this->container['replyTo'] = isset($data['replyTo']) ? $data['replyTo'] : null;
+        $this->container['reply_to'] = isset($data['reply_to']) ? $data['reply_to'] : null;
         $this->container['cc'] = isset($data['cc']) ? $data['cc'] : null;
         $this->container['bcc'] = isset($data['bcc']) ? $data['bcc'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
@@ -166,8 +166,8 @@ class Message implements ArrayAccess
     {
         $invalid_properties = [];
 
-        if ($this->container['templateId'] === null) {
-            $invalid_properties[] = "'templateId' can't be null";
+        if ($this->container['template_id'] === null) {
+            $invalid_properties[] = "'template_id' can't be null";
         }
         if ($this->container['from'] === null) {
             $invalid_properties[] = "'from' can't be null";
@@ -190,7 +190,7 @@ class Message implements ArrayAccess
     public function valid()
     {
 
-        if ($this->container['templateId'] === null) {
+        if ($this->container['template_id'] === null) {
             return false;
         }
         if ($this->container['from'] === null) {
@@ -207,22 +207,22 @@ class Message implements ArrayAccess
 
 
     /**
-     * Gets templateId
+     * Gets template_id
      * @return string
      */
     public function getTemplateId()
     {
-        return $this->container['templateId'];
+        return $this->container['template_id'];
     }
 
     /**
-     * Sets templateId
-     * @param string $templateId
+     * Sets template_id
+     * @param string $template_id
      * @return $this
      */
-    public function setTemplateId($templateId)
+    public function setTemplateId($template_id)
     {
-        $this->container['templateId'] = $templateId;
+        $this->container['template_id'] = $template_id;
 
         return $this;
     }
@@ -291,22 +291,22 @@ class Message implements ArrayAccess
     }
 
     /**
-     * Gets replyTo
+     * Gets reply_to
      * @return \Swagger\Client\Model\Mailer[]
      */
     public function getReplyTo()
     {
-        return $this->container['replyTo'];
+        return $this->container['reply_to'];
     }
 
     /**
-     * Sets replyTo
-     * @param \Swagger\Client\Model\Mailer[] $replyTo
+     * Sets reply_to
+     * @param \Swagger\Client\Model\Mailer[] $reply_to
      * @return $this
      */
-    public function setReplyTo($replyTo)
+    public function setReplyTo($reply_to)
     {
-        $this->container['replyTo'] = $replyTo;
+        $this->container['reply_to'] = $reply_to;
 
         return $this;
     }

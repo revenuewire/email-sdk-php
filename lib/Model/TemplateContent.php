@@ -11,9 +11,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -55,6 +55,8 @@ class TemplateContent implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
+        'template_id' => 'string',
+        'lang' => 'string',
         'subject' => 'string',
         'body' => 'string',
         'text' => 'string',
@@ -73,6 +75,8 @@ class TemplateContent implements ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'template_id' => 'templateId',
+        'lang' => 'lang',
         'subject' => 'subject',
         'body' => 'body',
         'text' => 'text',
@@ -87,6 +91,8 @@ class TemplateContent implements ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
+        'template_id' => 'setTemplateId',
+        'lang' => 'setLang',
         'subject' => 'setSubject',
         'body' => 'setBody',
         'text' => 'setText',
@@ -101,6 +107,8 @@ class TemplateContent implements ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
+        'template_id' => 'getTemplateId',
+        'lang' => 'getLang',
         'subject' => 'getSubject',
         'body' => 'getBody',
         'text' => 'getText',
@@ -140,6 +148,8 @@ class TemplateContent implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['template_id'] = isset($data['template_id']) ? $data['template_id'] : null;
+        $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
         $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
         $this->container['body'] = isset($data['body']) ? $data['body'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
@@ -158,6 +168,12 @@ class TemplateContent implements ArrayAccess
 
         if ($this->container['id'] === null) {
             $invalid_properties[] = "'id' can't be null";
+        }
+        if ($this->container['template_id'] === null) {
+            $invalid_properties[] = "'template_id' can't be null";
+        }
+        if ($this->container['lang'] === null) {
+            $invalid_properties[] = "'lang' can't be null";
         }
         if ($this->container['subject'] === null) {
             $invalid_properties[] = "'subject' can't be null";
@@ -178,6 +194,12 @@ class TemplateContent implements ArrayAccess
     {
 
         if ($this->container['id'] === null) {
+            return false;
+        }
+        if ($this->container['template_id'] === null) {
+            return false;
+        }
+        if ($this->container['lang'] === null) {
             return false;
         }
         if ($this->container['subject'] === null) {
@@ -207,6 +229,48 @@ class TemplateContent implements ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id
+     * @return string
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     * @param string $template_id
+     * @return $this
+     */
+    public function setTemplateId($template_id)
+    {
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets lang
+     * @return string
+     */
+    public function getLang()
+    {
+        return $this->container['lang'];
+    }
+
+    /**
+     * Sets lang
+     * @param string $lang
+     * @return $this
+     */
+    public function setLang($lang)
+    {
+        $this->container['lang'] = $lang;
 
         return $this;
     }

@@ -11,9 +11,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -56,13 +56,16 @@ class Template implements ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'name' => 'string',
-        'defaultLanguage' => 'string',
-        'active' => 'bool',
-        'lastMessageSentDate' => 'int',
-        'totalMessageSent' => 'int',
+        'scope' => 'string',
+        'type' => 'string',
+        'account_id' => 'int',
+        'product_id' => 'int',
+        'offer_id' => 'int',
+        'status' => 'string',
+        'last_message_sent_date' => 'int',
+        'total_message_sent' => 'int',
         'created' => 'int',
-        'modified' => 'int',
-        'contents' => '\Swagger\Client\Model\TemplateContentKey[]'
+        'modified' => 'int'
     ];
 
     public static function swaggerTypes()
@@ -77,13 +80,16 @@ class Template implements ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'defaultLanguage' => 'defaultLanguage',
-        'active' => 'active',
-        'lastMessageSentDate' => 'lastMessageSentDate',
-        'totalMessageSent' => 'totalMessageSent',
+        'scope' => 'scope',
+        'type' => 'type',
+        'account_id' => 'accountId',
+        'product_id' => 'productId',
+        'offer_id' => 'offerId',
+        'status' => 'status',
+        'last_message_sent_date' => 'lastMessageSentDate',
+        'total_message_sent' => 'totalMessageSent',
         'created' => 'created',
-        'modified' => 'modified',
-        'contents' => 'contents'
+        'modified' => 'modified'
     ];
 
 
@@ -94,13 +100,16 @@ class Template implements ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'defaultLanguage' => 'setDefaultLanguage',
-        'active' => 'setActive',
-        'lastMessageSentDate' => 'setLastMessageSentDate',
-        'totalMessageSent' => 'setTotalMessageSent',
+        'scope' => 'setScope',
+        'type' => 'setType',
+        'account_id' => 'setAccountId',
+        'product_id' => 'setProductId',
+        'offer_id' => 'setOfferId',
+        'status' => 'setStatus',
+        'last_message_sent_date' => 'setLastMessageSentDate',
+        'total_message_sent' => 'setTotalMessageSent',
         'created' => 'setCreated',
-        'modified' => 'setModified',
-        'contents' => 'setContents'
+        'modified' => 'setModified'
     ];
 
 
@@ -111,13 +120,16 @@ class Template implements ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'defaultLanguage' => 'getDefaultLanguage',
-        'active' => 'getActive',
-        'lastMessageSentDate' => 'getLastMessageSentDate',
-        'totalMessageSent' => 'getTotalMessageSent',
+        'scope' => 'getScope',
+        'type' => 'getType',
+        'account_id' => 'getAccountId',
+        'product_id' => 'getProductId',
+        'offer_id' => 'getOfferId',
+        'status' => 'getStatus',
+        'last_message_sent_date' => 'getLastMessageSentDate',
+        'total_message_sent' => 'getTotalMessageSent',
         'created' => 'getCreated',
-        'modified' => 'getModified',
-        'contents' => 'getContents'
+        'modified' => 'getModified'
     ];
 
     public static function attributeMap()
@@ -135,8 +147,38 @@ class Template implements ArrayAccess
         return self::$getters;
     }
 
+    const SCOPE_PUBLIC = 'PUBLIC';
+    const SCOPE_PRIVATE = 'PRIVATE';
+    const STATUS_PENDING = 'PENDING';
+    const STATUS_ACTIVE = 'ACTIVE';
+    const STATUS_DELETED = 'DELETED';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getScopeAllowableValues()
+    {
+        return [
+            self::SCOPE_PUBLIC,
+            self::SCOPE_PRIVATE,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_ACTIVE,
+            self::STATUS_DELETED,
+        ];
+    }
     
 
     /**
@@ -153,13 +195,16 @@ class Template implements ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['defaultLanguage'] = isset($data['defaultLanguage']) ? $data['defaultLanguage'] : null;
-        $this->container['active'] = isset($data['active']) ? $data['active'] : null;
-        $this->container['lastMessageSentDate'] = isset($data['lastMessageSentDate']) ? $data['lastMessageSentDate'] : null;
-        $this->container['totalMessageSent'] = isset($data['totalMessageSent']) ? $data['totalMessageSent'] : null;
+        $this->container['scope'] = isset($data['scope']) ? $data['scope'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['account_id'] = isset($data['account_id']) ? $data['account_id'] : null;
+        $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
+        $this->container['offer_id'] = isset($data['offer_id']) ? $data['offer_id'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['last_message_sent_date'] = isset($data['last_message_sent_date']) ? $data['last_message_sent_date'] : null;
+        $this->container['total_message_sent'] = isset($data['total_message_sent']) ? $data['total_message_sent'] : null;
         $this->container['created'] = isset($data['created']) ? $data['created'] : null;
         $this->container['modified'] = isset($data['modified']) ? $data['modified'] : null;
-        $this->container['contents'] = isset($data['contents']) ? $data['contents'] : null;
     }
 
     /**
@@ -177,9 +222,16 @@ class Template implements ArrayAccess
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
         }
-        if ($this->container['defaultLanguage'] === null) {
-            $invalid_properties[] = "'defaultLanguage' can't be null";
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'.";
         }
+
+        $allowed_values = ["PENDING", "ACTIVE", "DELETED"];
+        if (!in_array($this->container['status'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'status', must be one of 'PENDING', 'ACTIVE', 'DELETED'.";
+        }
+
         return $invalid_properties;
     }
 
@@ -198,7 +250,12 @@ class Template implements ArrayAccess
         if ($this->container['name'] === null) {
             return false;
         }
-        if ($this->container['defaultLanguage'] === null) {
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            return false;
+        }
+        $allowed_values = ["PENDING", "ACTIVE", "DELETED"];
+        if (!in_array($this->container['status'], $allowed_values)) {
             return false;
         }
         return true;
@@ -248,85 +305,177 @@ class Template implements ArrayAccess
     }
 
     /**
-     * Gets defaultLanguage
+     * Gets scope
      * @return string
      */
-    public function getDefaultLanguage()
+    public function getScope()
     {
-        return $this->container['defaultLanguage'];
+        return $this->container['scope'];
     }
 
     /**
-     * Sets defaultLanguage
-     * @param string $defaultLanguage
+     * Sets scope
+     * @param string $scope
      * @return $this
      */
-    public function setDefaultLanguage($defaultLanguage)
+    public function setScope($scope)
     {
-        $this->container['defaultLanguage'] = $defaultLanguage;
+        $allowed_values = array('PUBLIC', 'PRIVATE');
+        if (!is_null($scope) && (!in_array($scope, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'");
+        }
+        $this->container['scope'] = $scope;
 
         return $this;
     }
 
     /**
-     * Gets active
-     * @return bool
+     * Gets type
+     * @return string
      */
-    public function getActive()
+    public function getType()
     {
-        return $this->container['active'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets active
-     * @param bool $active
+     * Sets type
+     * @param string $type
      * @return $this
      */
-    public function setActive($active)
+    public function setType($type)
     {
-        $this->container['active'] = $active;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets lastMessageSentDate
+     * Gets account_id
+     * @return int
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     * @param int $account_id
+     * @return $this
+     */
+    public function setAccountId($account_id)
+    {
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id
+     * @return int
+     */
+    public function getProductId()
+    {
+        return $this->container['product_id'];
+    }
+
+    /**
+     * Sets product_id
+     * @param int $product_id
+     * @return $this
+     */
+    public function setProductId($product_id)
+    {
+        $this->container['product_id'] = $product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_id
+     * @return int
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     * @param int $offer_id
+     * @return $this
+     */
+    public function setOfferId($offer_id)
+    {
+        $this->container['offer_id'] = $offer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     * @param string $status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $allowed_values = array('PENDING', 'ACTIVE', 'DELETED');
+        if (!is_null($status) && (!in_array($status, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'PENDING', 'ACTIVE', 'DELETED'");
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_message_sent_date
      * @return int
      */
     public function getLastMessageSentDate()
     {
-        return $this->container['lastMessageSentDate'];
+        return $this->container['last_message_sent_date'];
     }
 
     /**
-     * Sets lastMessageSentDate
-     * @param int $lastMessageSentDate
+     * Sets last_message_sent_date
+     * @param int $last_message_sent_date
      * @return $this
      */
-    public function setLastMessageSentDate($lastMessageSentDate)
+    public function setLastMessageSentDate($last_message_sent_date)
     {
-        $this->container['lastMessageSentDate'] = $lastMessageSentDate;
+        $this->container['last_message_sent_date'] = $last_message_sent_date;
 
         return $this;
     }
 
     /**
-     * Gets totalMessageSent
+     * Gets total_message_sent
      * @return int
      */
     public function getTotalMessageSent()
     {
-        return $this->container['totalMessageSent'];
+        return $this->container['total_message_sent'];
     }
 
     /**
-     * Sets totalMessageSent
-     * @param int $totalMessageSent
+     * Sets total_message_sent
+     * @param int $total_message_sent
      * @return $this
      */
-    public function setTotalMessageSent($totalMessageSent)
+    public function setTotalMessageSent($total_message_sent)
     {
-        $this->container['totalMessageSent'] = $totalMessageSent;
+        $this->container['total_message_sent'] = $total_message_sent;
 
         return $this;
     }
@@ -369,27 +518,6 @@ class Template implements ArrayAccess
     public function setModified($modified)
     {
         $this->container['modified'] = $modified;
-
-        return $this;
-    }
-
-    /**
-     * Gets contents
-     * @return \Swagger\Client\Model\TemplateContentKey[]
-     */
-    public function getContents()
-    {
-        return $this->container['contents'];
-    }
-
-    /**
-     * Sets contents
-     * @param \Swagger\Client\Model\TemplateContentKey[] $contents
-     * @return $this
-     */
-    public function setContents($contents)
-    {
-        $this->container['contents'] = $contents;
 
         return $this;
     }

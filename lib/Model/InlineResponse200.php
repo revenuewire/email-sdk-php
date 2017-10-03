@@ -11,9 +11,9 @@
  */
 
 /**
- * RevenueWire Simple Email Service
+ * RevenueWire Email Service
  *
- * A simple email service
+ * An email service
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -54,8 +54,7 @@ class InlineResponse200 implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'response' => '\Swagger\Client\Model\Response',
-        'data' => '\Swagger\Client\Model\Template[]'
+        'hello' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -68,8 +67,7 @@ class InlineResponse200 implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'response' => 'response',
-        'data' => 'data'
+        'hello' => 'hello'
     ];
 
 
@@ -78,8 +76,7 @@ class InlineResponse200 implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'response' => 'setResponse',
-        'data' => 'setData'
+        'hello' => 'setHello'
     ];
 
 
@@ -88,8 +85,7 @@ class InlineResponse200 implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'response' => 'getResponse',
-        'data' => 'getData'
+        'hello' => 'getHello'
     ];
 
     public static function attributeMap()
@@ -123,8 +119,7 @@ class InlineResponse200 implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['response'] = isset($data['response']) ? $data['response'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['hello'] = isset($data['hello']) ? $data['hello'] : null;
     }
 
     /**
@@ -153,43 +148,22 @@ class InlineResponse200 implements ArrayAccess
 
 
     /**
-     * Gets response
-     * @return \Swagger\Client\Model\Response
+     * Gets hello
+     * @return string
      */
-    public function getResponse()
+    public function getHello()
     {
-        return $this->container['response'];
+        return $this->container['hello'];
     }
 
     /**
-     * Sets response
-     * @param \Swagger\Client\Model\Response $response
+     * Sets hello
+     * @param string $hello
      * @return $this
      */
-    public function setResponse($response)
+    public function setHello($hello)
     {
-        $this->container['response'] = $response;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     * @return \Swagger\Client\Model\Template[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     * @param \Swagger\Client\Model\Template[] $data
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
+        $this->container['hello'] = $hello;
 
         return $this;
     }
