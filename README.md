@@ -107,6 +107,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [EmailType](docs/Model/EmailType.md)
+ - [EmailTypeTemplate](docs/Model/EmailTypeTemplate.md)
+ - [EmailTypeTemplateTo](docs/Model/EmailTypeTemplateTo.md)
  - [EmailTypeVariable](docs/Model/EmailTypeVariable.md)
  - [Error](docs/Model/Error.md)
  - [InlineResponse200](docs/Model/InlineResponse200.md)

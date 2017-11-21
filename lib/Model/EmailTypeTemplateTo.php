@@ -1,6 +1,6 @@
 <?php
 /**
- * EmailType
+ * EmailTypeTemplateTo
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * EmailType Class Doc Comment
+ * EmailTypeTemplateTo Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class EmailType implements ArrayAccess
+class EmailTypeTemplateTo implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,17 +47,15 @@ class EmailType implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'emailType';
+    protected static $swaggerModelName = 'emailTypeTemplate_to';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'title' => 'string',
-        'fid' => 'string',
-        'order' => 'int',
-        'types' => '\Swagger\Client\Model\EmailTypeTemplate[]'
+        'name' => 'string',
+        'email_address' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -70,10 +68,8 @@ class EmailType implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'fid' => 'fid',
-        'order' => 'order',
-        'types' => 'types'
+        'name' => 'name',
+        'email_address' => 'emailAddress'
     ];
 
 
@@ -82,10 +78,8 @@ class EmailType implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'fid' => 'setFid',
-        'order' => 'setOrder',
-        'types' => 'setTypes'
+        'name' => 'setName',
+        'email_address' => 'setEmailAddress'
     ];
 
 
@@ -94,10 +88,8 @@ class EmailType implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'fid' => 'getFid',
-        'order' => 'getOrder',
-        'types' => 'getTypes'
+        'name' => 'getName',
+        'email_address' => 'getEmailAddress'
     ];
 
     public static function attributeMap()
@@ -131,10 +123,8 @@ class EmailType implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['fid'] = isset($data['fid']) ? $data['fid'] : null;
-        $this->container['order'] = isset($data['order']) ? $data['order'] : null;
-        $this->container['types'] = isset($data['types']) ? $data['types'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['email_address'] = isset($data['email_address']) ? $data['email_address'] : null;
     }
 
     /**
@@ -163,85 +153,43 @@ class EmailType implements ArrayAccess
 
 
     /**
-     * Gets title
+     * Gets name
      * @return string
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->container['title'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets title
-     * @param string $title
+     * Sets name
+     * @param string $name
      * @return $this
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->container['title'] = $title;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets fid
+     * Gets email_address
      * @return string
      */
-    public function getFid()
+    public function getEmailAddress()
     {
-        return $this->container['fid'];
+        return $this->container['email_address'];
     }
 
     /**
-     * Sets fid
-     * @param string $fid
+     * Sets email_address
+     * @param string $email_address
      * @return $this
      */
-    public function setFid($fid)
+    public function setEmailAddress($email_address)
     {
-        $this->container['fid'] = $fid;
-
-        return $this;
-    }
-
-    /**
-     * Gets order
-     * @return int
-     */
-    public function getOrder()
-    {
-        return $this->container['order'];
-    }
-
-    /**
-     * Sets order
-     * @param int $order
-     * @return $this
-     */
-    public function setOrder($order)
-    {
-        $this->container['order'] = $order;
-
-        return $this;
-    }
-
-    /**
-     * Gets types
-     * @return \Swagger\Client\Model\EmailTypeTemplate[]
-     */
-    public function getTypes()
-    {
-        return $this->container['types'];
-    }
-
-    /**
-     * Sets types
-     * @param \Swagger\Client\Model\EmailTypeTemplate[] $types
-     * @return $this
-     */
-    public function setTypes($types)
-    {
-        $this->container['types'] = $types;
+        $this->container['email_address'] = $email_address;
 
         return $this;
     }
