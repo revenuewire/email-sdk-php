@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *TemplatesApi* | [**getContents**](docs/Api/TemplatesApi.md#getcontents) | **GET** /templates/{id}/contents | 
 *TemplatesApi* | [**getTemplate**](docs/Api/TemplatesApi.md#gettemplate) | **GET** /templates/{id} | 
 *TemplatesApi* | [**getTemplates**](docs/Api/TemplatesApi.md#gettemplates) | **GET** /templates | 
+*TemplatesApi* | [**previewTemplate**](docs/Api/TemplatesApi.md#previewtemplate) | **POST** /templates/{id}/preview | Get preview of the content
 *TemplatesApi* | [**updateContent**](docs/Api/TemplatesApi.md#updatecontent) | **PUT** /templates/{id}/contents/{contentId} | Update Template Content
 *TemplatesApi* | [**updateTemplate**](docs/Api/TemplatesApi.md#updatetemplate) | **PUT** /templates/{id} | 
 
@@ -117,6 +118,9 @@ Class | Method | HTTP request | Description
  - [NewResource](docs/Model/NewResource.md)
  - [NewTemplate](docs/Model/NewTemplate.md)
  - [NewTemplateContent](docs/Model/NewTemplateContent.md)
+ - [PreviewContent](docs/Model/PreviewContent.md)
+ - [PreviewResult](docs/Model/PreviewResult.md)
+ - [PreviewResultHtml](docs/Model/PreviewResultHtml.md)
  - [Resource](docs/Model/Resource.md)
  - [Response](docs/Model/Response.md)
  - [Template](docs/Model/Template.md)

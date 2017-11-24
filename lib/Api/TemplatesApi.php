@@ -934,6 +934,112 @@ class TemplatesApi
     }
 
     /**
+     * Operation previewTemplate
+     *
+     * Get preview of the content
+     *
+     * @param string $id  (required)
+     * @param \Swagger\Client\Model\PreviewContent $preview  (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return \Swagger\Client\Model\PreviewResult
+     */
+    public function previewTemplate($id, $preview)
+    {
+        list($response) = $this->previewTemplateWithHttpInfo($id, $preview);
+        return $response;
+    }
+
+    /**
+     * Operation previewTemplateWithHttpInfo
+     *
+     * Get preview of the content
+     *
+     * @param string $id  (required)
+     * @param \Swagger\Client\Model\PreviewContent $preview  (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of \Swagger\Client\Model\PreviewResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function previewTemplateWithHttpInfo($id, $preview)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling previewTemplate');
+        }
+        // verify the required parameter 'preview' is set
+        if ($preview === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $preview when calling previewTemplate');
+        }
+        // parse inputs
+        $resourcePath = "/templates/{id}/preview";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                "{" . "id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        // body params
+        $_tempBody = null;
+        if (isset($preview)) {
+            $_tempBody = $preview;
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-API-KEY');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-API-KEY'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('X-Authorization-JWT');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['X-Authorization-JWT'] = $apiKey;
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'POST',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\Swagger\Client\Model\PreviewResult',
+                '/templates/{id}/preview'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\PreviewResult', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\PreviewResult', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
      * Operation updateContent
      *
      * Update Template Content
