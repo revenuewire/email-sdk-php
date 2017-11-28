@@ -131,8 +131,22 @@ class Resource implements ArrayAccess
         return self::$getters;
     }
 
+    const SCOPE_PUBLIC = 'PUBLIC';
+    const SCOPE_PRIVATE = 'PRIVATE';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getScopeAllowableValues()
+    {
+        return [
+            self::SCOPE_PUBLIC,
+            self::SCOPE_PRIVATE,
+        ];
+    }
     
 
     /**
@@ -166,6 +180,11 @@ class Resource implements ArrayAccess
     {
         $invalid_properties = [];
 
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'.";
+        }
+
         return $invalid_properties;
     }
 
@@ -178,6 +197,10 @@ class Resource implements ArrayAccess
     public function valid()
     {
 
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            return false;
+        }
         return true;
     }
 
@@ -240,6 +263,10 @@ class Resource implements ArrayAccess
      */
     public function setScope($scope)
     {
+        $allowed_values = array('PUBLIC', 'PRIVATE');
+        if (!is_null($scope) && (!in_array($scope, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'");
+        }
         $this->container['scope'] = $scope;
 
         return $this;

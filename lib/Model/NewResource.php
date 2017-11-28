@@ -58,7 +58,8 @@ class NewResource implements ArrayAccess
         'lang' => 'string',
         'description' => 'string',
         'type' => 'string',
-        'content' => 'string'
+        'content' => 'string',
+        'scope' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -75,7 +76,8 @@ class NewResource implements ArrayAccess
         'lang' => 'lang',
         'description' => 'description',
         'type' => 'type',
-        'content' => 'content'
+        'content' => 'content',
+        'scope' => 'scope'
     ];
 
 
@@ -88,7 +90,8 @@ class NewResource implements ArrayAccess
         'lang' => 'setLang',
         'description' => 'setDescription',
         'type' => 'setType',
-        'content' => 'setContent'
+        'content' => 'setContent',
+        'scope' => 'setScope'
     ];
 
 
@@ -101,7 +104,8 @@ class NewResource implements ArrayAccess
         'lang' => 'getLang',
         'description' => 'getDescription',
         'type' => 'getType',
-        'content' => 'getContent'
+        'content' => 'getContent',
+        'scope' => 'getScope'
     ];
 
     public static function attributeMap()
@@ -119,8 +123,22 @@ class NewResource implements ArrayAccess
         return self::$getters;
     }
 
+    const SCOPE_PUBLIC = 'PUBLIC';
+    const SCOPE_PRIVATE = 'PRIVATE';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getScopeAllowableValues()
+    {
+        return [
+            self::SCOPE_PUBLIC,
+            self::SCOPE_PRIVATE,
+        ];
+    }
     
 
     /**
@@ -140,6 +158,7 @@ class NewResource implements ArrayAccess
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['content'] = isset($data['content']) ? $data['content'] : null;
+        $this->container['scope'] = isset($data['scope']) ? $data['scope'] : null;
     }
 
     /**
@@ -157,6 +176,11 @@ class NewResource implements ArrayAccess
         if ($this->container['content'] === null) {
             $invalid_properties[] = "'content' can't be null";
         }
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'.";
+        }
+
         return $invalid_properties;
     }
 
@@ -173,6 +197,10 @@ class NewResource implements ArrayAccess
             return false;
         }
         if ($this->container['content'] === null) {
+            return false;
+        }
+        $allowed_values = ["PUBLIC", "PRIVATE"];
+        if (!in_array($this->container['scope'], $allowed_values)) {
             return false;
         }
         return true;
@@ -280,6 +308,31 @@ class NewResource implements ArrayAccess
     public function setContent($content)
     {
         $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     * @return string
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     * @param string $scope
+     * @return $this
+     */
+    public function setScope($scope)
+    {
+        $allowed_values = array('PUBLIC', 'PRIVATE');
+        if (!is_null($scope) && (!in_array($scope, $allowed_values))) {
+            throw new \InvalidArgumentException("Invalid value for 'scope', must be one of 'PUBLIC', 'PRIVATE'");
+        }
+        $this->container['scope'] = $scope;
 
         return $this;
     }

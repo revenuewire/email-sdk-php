@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **resourcesUploadPost**
-> \Swagger\Client\Model\Resource resourcesUploadPost($fid, $image, $description)
+> \Swagger\Client\Model\Resource resourcesUploadPost($fid, $image, $description, $scope)
 
 
 
@@ -257,9 +257,10 @@ $api_instance = new Swagger\Client\Api\ResourcesApi();
 $fid = "fid_example"; // string | 
 $image = "/path/to/file.txt"; // \SplFileObject | image
 $description = "description_example"; // string | 
+$scope = "scope_example"; // string | 
 
 try {
-    $result = $api_instance->resourcesUploadPost($fid, $image, $description);
+    $result = $api_instance->resourcesUploadPost($fid, $image, $description, $scope);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ResourcesApi->resourcesUploadPost: ', $e->getMessage(), PHP_EOL;
@@ -274,6 +275,7 @@ Name | Type | Description  | Notes
  **fid** | **string**|  |
  **image** | **\SplFileObject**| image |
  **description** | **string**|  | [optional]
+ **scope** | **string**|  | [optional]
 
 ### Return type
 

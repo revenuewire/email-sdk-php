@@ -492,12 +492,13 @@ class ResourcesApi
      * @param string $fid  (required)
      * @param \SplFileObject $image image (required)
      * @param string $description  (optional)
+     * @param string $scope  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Resource
      */
-    public function resourcesUploadPost($fid, $image, $description = null)
+    public function resourcesUploadPost($fid, $image, $description = null, $scope = null)
     {
-        list($response) = $this->resourcesUploadPostWithHttpInfo($fid, $image, $description);
+        list($response) = $this->resourcesUploadPostWithHttpInfo($fid, $image, $description, $scope);
         return $response;
     }
 
@@ -509,10 +510,11 @@ class ResourcesApi
      * @param string $fid  (required)
      * @param \SplFileObject $image image (required)
      * @param string $description  (optional)
+     * @param string $scope  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Resource, HTTP status code, HTTP response headers (array of strings)
      */
-    public function resourcesUploadPostWithHttpInfo($fid, $image, $description = null)
+    public function resourcesUploadPostWithHttpInfo($fid, $image, $description = null, $scope = null)
     {
         // verify the required parameter 'fid' is set
         if ($fid === null) {
@@ -554,6 +556,10 @@ class ResourcesApi
             } else {
                 $formParams['image'] = '@' . $this->apiClient->getSerializer()->toFormValue($image);
             }
+        }
+        // form params
+        if ($scope !== null) {
+            $formParams['scope'] = $this->apiClient->getSerializer()->toFormValue($scope);
         }
         
         // for model (json/xml)
